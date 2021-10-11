@@ -4,10 +4,10 @@ if ! grep -q 'cloud_user' /etc/passwd
 then
   useradd -m -U -s /bin/bash cloud_user
 fi
-cloud_user_tmp_pass="Password_1"
+cloud_user_tmp_pass=$"Password_1"
 echo "cloud_user:${cloud_user_tmp_pass}" | chpasswd
 echo "cloud_user:${cloud_user_tmp_pass}"
-root_tmp_pass=$(< /dev/urandom tr -dc A-Za-z0-9 | head -c24; echo)
+root_tmp_pass=$"Password_1"
 echo "root:${root_tmp_pass}" | chpasswd
 chage -I -1 -m 0 -M 99999 -E -1 cloud_user
 chage -I -1 -m 0 -M 99999 -E -1 root
